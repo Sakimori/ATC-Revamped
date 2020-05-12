@@ -13,3 +13,12 @@ public enum WaypointPathType
     Takeoff,
     Exit
 }
+
+public enum Jurisdiction
+{
+    Handoff,
+    Tower,
+    Ground,
+    Terminal,
+    Departure
+}
