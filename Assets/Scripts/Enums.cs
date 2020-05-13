@@ -22,3 +22,9 @@ public enum Jurisdiction
     Terminal,
     Departure
 }
+
+public enum Invert
+{
+    Standard = -1,
+    Inverted = 1,
+}

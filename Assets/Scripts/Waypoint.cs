@@ -15,7 +15,6 @@ public class Waypoint : MonoBehaviour
     [SerializeField]
     WaypointPathType type;
 
-    [SerializeField]
     Jurisdiction jurisdiction;
 
     public int forcedSpeed;
