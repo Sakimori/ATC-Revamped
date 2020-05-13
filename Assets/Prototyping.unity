@@ -1010,6 +1010,21 @@ PrefabInstance:
       propertyPath: nextDestination
       value: 
       objectReference: {fileID: 1675641836}
+    - target: {fileID: 8758169623192830200, guid: fe877e0a9e9078f48bae95201b229e4b,
+        type: 3}
+      propertyPath: rollMaxAngle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758169623192830200, guid: fe877e0a9e9078f48bae95201b229e4b,
+        type: 3}
+      propertyPath: rollResetSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758169623192830200, guid: fe877e0a9e9078f48bae95201b229e4b,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8758169623192830201, guid: fe877e0a9e9078f48bae95201b229e4b,
         type: 3}
       propertyPath: m_CollisionDetection

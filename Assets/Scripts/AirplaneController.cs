@@ -29,7 +29,7 @@ public class AirplaneController : MonoBehaviour
     float rollMaxAngle;
 
     [SerializeField]
-    float rollSpeedAccel;
+    float rollResetSpeed;
 
     [SerializeField]
     float turnSpeed;
@@ -106,27 +106,12 @@ public class AirplaneController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
             yield return null;
         }
-    }
 
-    IEnumerator Roll(Quaternion targetRotation)
-    {
-        float angleDirection = Mathf.Sign(Vector3.SignedAngle(transform.forward, nextDestination.transform.position - transform.position, Vector3.up));
-        //positive means right turn
-        float interpolater = 0f;
-        while (transform.rotation != targetRotation)
+        while (Mathf.Abs(transform.rotation.eulerAngles.z) > 2)
         {
-            while (Mathf.Abs(planeBody.transform.rotation.z) < rollMaxAngle && transform.rotation != targetRotation)
-            {
-                planeBody.transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0f, -rollMaxAngle * angleDirection, interpolater));
-                interpolater += rollSpeedAccel / rollMaxAngle * Time.deltaTime;
-                yield return null;
-            }
+            targetRotation = Quaternion.LookRotation(transform.forward);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rollResetSpeed * Time.deltaTime);
             yield return null;
-        }
-        while (interpolater > 0)
-        {
-            planeBody.transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0f, -rollMaxAngle * angleDirection, interpolater));
-            interpolater -= rollSpeedAccel / rollMaxAngle * Time.deltaTime;
         }
     }
 }
