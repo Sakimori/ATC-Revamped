@@ -11,7 +11,8 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     GameObject planeBody;
 
-    Jurisdiction jurisdiction;
+    [SerializeField]
+    Jurisdiction jurisdiction = Jurisdiction.Handoff;
     
     [SerializeField]
     int airspeedMin;
@@ -34,19 +35,19 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     float turnSpeed;
 
-    bool inMotion;
+    State state;
 
     // Start is called before the first frame update
     void Start()
     {
-        inMotion = true;
+        state = State.Flight;
         transform.LookAt(nextDestination.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (inMotion)
+        if (state == State.Flight)
         {
             float transStep = airspeedCurrent * Time.deltaTime;
             //transform.rotation = Quaternion.Euler
@@ -61,18 +62,19 @@ public class AirplaneController : MonoBehaviour
         if (collision.gameObject == nextDestination)
         {
             Waypoint thisWaypoint = nextDestination.GetComponent<Waypoint>();
-            if (!thisWaypoint.isEnd)
+            ChangeJurisdiction(thisWaypoint.jurisdiction);
+            if (!thisWaypoint.isTerminal)
             {
                 if (!(thisWaypoint.forcedSpeed == 0))
                 {
                     StartCoroutine("ChangeSpeed", thisWaypoint.forcedSpeed);
                 }
                 nextDestination = thisWaypoint.nextWaypoint.GetComponent<Waypoint>().gameObject;
-                StartCoroutine("ChangeRotation");
+                StartCoroutine("ChangeRotationInFlight");
             }
             else
             {
-                inMotion = false;
+                state = State.Parked;
                 nextDestination = gameObject;
             }
         }
@@ -92,7 +94,7 @@ public class AirplaneController : MonoBehaviour
         airspeedCurrent = Mathf.Round(airspeedCurrent);
     }
 
-    IEnumerator ChangeRotation()
+    IEnumerator ChangeRotationInFlight()
     {
         Quaternion targetRotation = Quaternion.LookRotation(nextDestination.transform.position - transform.position);
         //StartCoroutine("Roll", targetRotation);
@@ -114,4 +116,38 @@ public class AirplaneController : MonoBehaviour
             yield return null;
         }
     }
+
+    private void ChangeJurisdiction(Jurisdiction newJurisdiction)
+    {
+        jurisdiction = newJurisdiction;
+        switch (newJurisdiction)
+        {
+            case Jurisdiction.Handoff:
+                state = State.Flight;
+                break;
+            case Jurisdiction.Tower:
+                Waypoint thisWaypoint = nextDestination.GetComponent<Waypoint>();
+                switch (thisWaypoint.type)
+                {
+                    case WaypointPathType.Landing:
+                        state = State.Landing;
+                        break;
+                    case WaypointPathType.Takeoff:
+                        state = State.Takeoff;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case Jurisdiction.Ground:
+                state = State.Taxi;
+                break;
+            case Jurisdiction.Terminal:
+                state = State.Parked;
+                break;
+            default:
+                break;
+        }
+    }
+
 }

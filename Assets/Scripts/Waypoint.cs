@@ -7,15 +7,15 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     [SerializeField]
-    public bool isEnd;
+    public bool isTerminal;
 
     [SerializeField]
     public GameObject nextWaypoint;
 
     [SerializeField]
-    WaypointPathType type;
+    public WaypointPathType type;
 
-    Jurisdiction jurisdiction;
+    public Jurisdiction jurisdiction;
 
     public int forcedSpeed;
 
@@ -47,10 +47,11 @@ public class Waypoint : MonoBehaviour
                 //forcedSpeed = 1;
                 jurisdiction = Jurisdiction.Ground;
                 break;
-
             default:
                 Debug.LogError($"No jurisdiction found for path type {jurisdiction}.");
                 break;
         }
+
+        if (isTerminal) { jurisdiction = Jurisdiction.Terminal; }
     }
 }
