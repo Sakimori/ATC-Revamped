@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
 
     public int zoomMult = 4;
 
+    public float offsetX = 0;
+    public float offsetY = 0;
+
     [SerializeField]
     bool debugCam = false;
 
@@ -39,7 +42,7 @@ public class CameraController : MonoBehaviour
                 float axisY = Input.GetAxisRaw("Mouse Y");
 
 
-                Vector3 translation = new Vector3(axisX * (int)invertX, 0, axisY * (int)invertY);
+                Vector3 translation = new Vector3(axisX * (int)invertX, 0, axisY * (int)invertY); //Reads mouse movement, applies possible inversion
                 transform.Translate(translation);
             }
         }
@@ -49,6 +52,7 @@ public class CameraController : MonoBehaviour
             //distanceFromObject += axisZoom;
 
             transform.position = target.transform.position - camera.transform.forward * distanceFromObject;
+            transform.Translate(new Vector3(offsetX, 0, offsetY), Space.Self); //Slides camera around for UI re-centering
         }
     }
     // Update is called once per frame

@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd5b50aa2548a142890dd854f8e6198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnd: 0
+  isTerminal: 0
   nextWaypoint: {fileID: 0}
   type: 0
   jurisdiction: 0
+  forcedSpeed: 0
 --- !u!135 &3771893231862625201
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3771893231917401079
 GameObject:
