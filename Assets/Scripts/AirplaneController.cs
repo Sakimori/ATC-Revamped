@@ -67,10 +67,16 @@ public class AirplaneController : MonoBehaviour
             {
                 if (!(thisWaypoint.forcedSpeed == 0))
                 {
+                    StopCoroutine("ChangeSpeed");
                     StartCoroutine("ChangeSpeed", thisWaypoint.forcedSpeed);
                 }
                 nextDestination = thisWaypoint.nextWaypoint.GetComponent<Waypoint>().gameObject;
-                StartCoroutine("ChangeRotationInFlight");
+                if (state == State.Flight)
+                {
+                    StopCoroutine("ChangeRotationInFlight");
+                    StartCoroutine("ChangeRotationInFlight");
+                }
+
             }
             else
             {
@@ -78,6 +84,19 @@ public class AirplaneController : MonoBehaviour
                 nextDestination = gameObject;
             }
         }
+    }
+
+    public void NewWaypoint(Waypoint waypoint)
+    {
+        StopCoroutine("ChangeSpeed");
+        StopCoroutine("ChangeRotationInFlight");
+        ChangeJurisdiction(waypoint.jurisdiction);
+        nextDestination = waypoint.gameObject;
+        if (!(waypoint.forcedSpeed == 0))
+        {
+            StartCoroutine("ChangeSpeed", waypoint.forcedSpeed);
+        }
+        StartCoroutine("ChangeRotationInFlight");
     }
 
     IEnumerator ChangeSpeed(float targetSpeed)
