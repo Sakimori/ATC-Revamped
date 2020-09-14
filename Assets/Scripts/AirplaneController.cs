@@ -35,6 +35,12 @@ public class AirplaneController : MonoBehaviour
     [SerializeField]
     float turnSpeed;
 
+    [SerializeField]
+    bool isArrivals;
+
+    [SerializeField]
+    string flightNumber = "DA0666";
+
     State state;
 
     // Start is called before the first frame update
