@@ -670,13 +670,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1876140815}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &333804612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 204421671796267665, guid: fe877e0a9e9078f48bae95201b229e4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366380064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &333804614 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 204421671796267667, guid: fe877e0a9e9078f48bae95201b229e4b,
     type: 3}
   m_PrefabInstance: {fileID: 1366380064}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 333804612}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f94f2e280c95ee64c89190587faf213c, type: 3}
@@ -728,10 +734,10 @@ RectTransform:
   m_Father: {fileID: 1373110963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -273}
-  m_SizeDelta: {x: 230, y: 546}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 230, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &390926456
 MonoBehaviour:
@@ -2208,7 +2214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 265572542}
-  target: {fileID: 1987695336}
+  target: {fileID: 333804612}
   invertX: -1
   invertY: -1
   invertZoom: -1
@@ -3204,12 +3210,6 @@ PrefabInstance:
       objectReference: {fileID: 1451066328}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5176c9ee761ee642b8a45b8e231c8b4, type: 3}
---- !u!1 &1987695336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 204421671796267665, guid: fe877e0a9e9078f48bae95201b229e4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 204421670486083705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010282221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3771893231862625202, guid: f5176c9ee761ee642b8a45b8e231c8b4,
