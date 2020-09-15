@@ -873,18 +873,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 710860321}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &473027715 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3771893231862625203, guid: f5176c9ee761ee642b8a45b8e231c8b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 710860321}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473027714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd5b50aa2548a142890dd854f8e6198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &473027716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3771893231862625200, guid: f5176c9ee761ee642b8a45b8e231c8b4,
@@ -2154,7 +2142,7 @@ MonoBehaviour:
         m_MethodName: NewWaypoint
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 473027715}
+          m_ObjectArgument: {fileID: 2010282223}
           m_ObjectArgumentAssemblyTypeName: Waypoint, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3499,6 +3487,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 898661235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2010282223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3771893231862625203, guid: f5176c9ee761ee642b8a45b8e231c8b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 898661235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010282221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd5b50aa2548a142890dd854f8e6198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2010282224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3771893231862625200, guid: f5176c9ee761ee642b8a45b8e231c8b4,
