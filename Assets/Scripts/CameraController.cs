@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     GameObject camera;
 
     [SerializeField]
-    GameObject target;
+    public GameObject target;
 
     public Invert invertX = Invert.Standard;
     public Invert invertY = Invert.Inverted;

@@ -27,6 +27,9 @@ public class AirplaneController : MonoBehaviour
     int airspeedAccel;
 
     [SerializeField]
+    float speedMult = 1;
+
+    [SerializeField]
     float rollMaxAngle;
 
     [SerializeField]
@@ -39,7 +42,9 @@ public class AirplaneController : MonoBehaviour
     bool isArrivals;
 
     [SerializeField]
-    string flightNumber = "DA0666";
+    public string flightNumber = "DA0666";
+
+    public string statusText = "Approach to Traffic";
 
     State state;
 
@@ -55,7 +60,7 @@ public class AirplaneController : MonoBehaviour
     {
         if (state == State.Flight)
         {
-            float transStep = airspeedCurrent * Time.deltaTime;
+            float transStep = airspeedCurrent * Time.deltaTime * speedMult;
             //transform.rotation = Quaternion.Euler
             //transform.LookAt(nextDestination.transform);
             transform.position = transform.position + planeBody.transform.forward*transStep;
